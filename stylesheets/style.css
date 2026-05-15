@@ -1,0 +1,510 @@
+/* 
+  to hide intro completely after user skips it 
+  -used it for accessibilty.
+*/
+.skip-intro-active #introOverlay {
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* CSS variables for reusable theme colors.
+  to make the design easier to maintain later.*/
+
+:root {
+  --gold: #C8A96A;
+  --soft-gold: #e6c98f;
+}
+
+/*  Basic reset so spacing behaves consistently across browsers.*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  color: white;
+  overflow: hidden;
+  background: black;
+  z-index: 1;
+  position: relative;
+
+}
+
+/* 
+  Shared screen layout styles.
+  Using flexbox here to center content easily.
+*/
+
+.screen,
+.section {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  transition: all 1s;
+  overflow-y: auto;
+  /* Allows scrolling inside sections */
+  z-index: 5;
+  /* Added z-index to stay above canvas */
+}
+
+/* ===== Accessibilty feature  ===== */
+
+/* 
+  Skip link used to help keyboard users jump directly
+  to the main content instead of tabbing through everything.
+*/
+.skip-link {
+  position: absolute;
+  z-index: 1000;
+  /* Added z-index to stay on top of the page */
+  top: -40px;
+  left: 10px;
+  background: white;
+  color: black;
+  padding: 8px;
+
+}
+
+/* Skip link becomes visible when focused with keyboard tab.*/
+.skip-link:focus {
+  top: 10px;
+}
+
+/* 
+  Focus outline to improve keyboard accessibility.
+  Helping users to see which button is currently selected.
+*/
+button:focus {
+  outline: 3px solid white;
+  outline-offset: 4px;
+}
+
+/* Decorative floating side-title */
+.side-title {
+  position: fixed;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left top;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 22px;
+  letter-spacing: 6px;
+  color: burlywood;
+  animation: floatText 6s infinite;
+  /* Floating animation */
+
+
+  z-index: 10;
+}
+
+/* Keyframe animation for floating title.*/
+@keyframes floatText {
+  50% {
+    transform: translateY(-55%) rotate(-90deg)
+  }
+}
+
+/* INTRO SECTION */
+#introOverlay {
+  position: fixed;
+  inset: 0;
+  background: black;
+  z-index: 9999;
+  /* Very high z-index keeps intro above everything */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transition: opacity 1s;
+}
+
+/* Fullscreen cinematic intro video */
+#introOverlay video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* to prevent video stretching */
+
+}
+
+/* Intro skip button for accessibilty */
+.skipIntroBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px;
+  background: white;
+  color: black;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10000;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+/* Navigation bar */
+.nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  display: flex;
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  /* backdrop-filter to create glassmorphism blur effect.*/
+  z-index: 100;
+  opacity: 0;
+  transition: opacity 1s;
+
+}
+
+/* Hover effect so the button doesn't feel static */
+.nav button:hover {
+  background: yellow;
+  color: black;
+}
+
+/* to make the navigation fade in smoothly */
+.nav.show {
+  opacity: 1;
+}
+
+/* Animated rotating logo */
+.logo {
+  width: 100px;
+  margin-right: 40px;
+  animation: spin 5s linear infinite;
+  /* Infinite spin animation */
+}
+
+/* Rotation animation for the side logo */
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.nav button {
+  margin-left: 10px;
+  padding: 8px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 20px;
+
+}
+
+/* ===== SCREENS ===== */
+/* Handles showing and hiding different screens */
+.screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 80px 20px;
+  transition: all 1s;
+}
+
+/* Hidden screens slide away and become non-interactive.*/
+.hidden {
+  opacity: 0;
+  transform: translateY(100vh);
+  pointer-events: none;
+  /* to prevent hidden sections from blocking clicks */
+
+  display: none;
+  /* Added display none to ensure they don't block clicks */
+
+}
+
+/* ===== Home Section ===== */
+#home h1 {
+  font-size: 70px;
+  font-family: 'Orbitron', sans-serif;
+  line-height: 1.7;
+}
+
+p {
+  font-size: 20px;
+  color: lightgray;
+  margin-bottom: 40px;
+
+}
+
+#home2 {
+  justify-content: center;
+  text-align: center;
+}
+
+.title {
+  font-family: 'Bodoni Moda', serif;
+  /*responsive font css used to make text
+   scales smoothly between min and max sizes on all screens */
+  font-size: clamp(50px, 10vw, 70px);
+  color: var(--gold);
+  font-style: italic;
+  margin-bottom: 20px;
+}
+
+.subtitle1 {
+  font-size: 22px;
+  color: lightgray;
+  line-height: 1.9;
+  /* Better readability for accessibility */
+  margin-bottom: 40px;
+
+}
+
+.subtitle2 {
+  font-size: 22px;
+  color: lightgray;
+  max-width: 500px;
+  margin-bottom: 40px;
+}
+
+/* Main call-to-action buttons */
+.awaken-btn {
+  padding: 15px 40px;
+  background: yellow;
+  color: black;
+  border: none;
+  border-radius: 40px;
+  font-family: 'Orbitron', sans-serif;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* Smooth hover interaction */
+.awaken-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 30px rgba(200, 169, 106, 0.4);
+}
+
+
+#story h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+}
+
+
+
+/* ===== Portals ===== */
+/*CSS Grid used for responsive portal layout*/
+
+.doorGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  /* Auto responsive columns */
+  gap: 20px;
+  width: 90%;
+  max-width: 900px;
+}
+
+.door {
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.door img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  /* to keep images from stretching */
+
+}
+
+#doors h2 {
+
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 500;
+  color: white;
+  font-size: 3rem;
+  letter-spacing: 4px;
+  margin-bottom: 50px;
+
+}
+
+.door h3 {
+  padding: 10px;
+  color: yellow;
+}
+
+/* ===== Starfield bg ===== */
+canvas {
+  position: fixed;
+  inset: 0;
+  /* to keeps animated stars behind content */
+  z-index: 0;
+}
+
+
+/* ================================================= */
+/* Story timeline */
+.story-scroll-container {
+  max-width: 1000px;
+  width: 100%;
+  padding: 150px 20px;
+}
+
+.story-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.story-header h2 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 50px;
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 10px;
+}
+
+/*   Timeline reveal animations.*/
+
+.story-block {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+  margin-bottom: 250px;
+  opacity: 0;
+  transform: translateY(100px);
+  /* used it to make transitions smooth so changes don’t feel abrupt or instant */
+  transition: all 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Alternating timeline layout */
+/* Used it to alternate the layout so the timeline starts with image on one side 
+and then switches for the next blocks */
+.story-block:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* The Reveal Animation  */
+.story-block.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Image container for each story section */
+.image-wrap {
+  flex: 1;
+  /* gives equal space in layout */
+  position: relative;
+  opacity: 0;
+  /* hidden initially so animation can fade it in */
+  transition: opacity 1s 0.3s, transform 1s 0.3s;
+  /* smooth fade + scale animation */
+  transform: scale(0.8);
+}
+
+/* When story block becomes active, image smoothly appears */
+.story-block.active .image-wrap {
+  opacity: 1;
+  /* makes image visible */
+  transform: scale(1);
+}
+
+/* Circular glowing cosmic images */
+.image-wrap img {
+  width: 100%;
+  aspect-ratio: 1;
+  /* to keep image perfectly square */
+  object-fit: cover;
+  border-radius: 50%;
+  /* to make image circular */
+  border: 1px solid var(--gold);
+  /* gives soft gold outline */
+  box-shadow: 0 0 50px rgba(200, 169, 106, 0.1);
+}
+
+/* Text section for each story block */
+.text-wrap {
+  flex: 1.5;
+  opacity: 0;
+  transition: opacity 1s 0.6s, transform 1s 0.6s;
+  /* delayed smooth reveal after image */
+  transform: translateX(30px);
+}
+
+.story-block:nth-child(even).active .text-wrap {
+  transform: translateX(0);
+  /* to bring text to normal position */
+}
+
+/* When active, text becomes visible */
+.story-block.active .text-wrap {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Story heading  */
+.text-wrap h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: var(--soft-gold);
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+/* Paragraph -story content */
+.text-wrap p {
+  color: #ccc;
+  line-height: 1.8;
+  font-size: 20px;
+}
+
+/* --- Back button --- */
+.back-btn {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  z-index: 1000;
+  padding: 12px 25px;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gold);
+  color: var(--gold);
+  border-radius: 40px;
+  cursor: pointer;
+  font-family: 'Orbitron', sans-serif;
+  transition: 0.3s;
+}
+
+/* Simple hover effect  */
+.back-btn:hover {
+  background: var(--gold);
+  color: #000;
+}
+
+#subheading {
+  font-size: 90px;
+  font-weight: 500;
+  font-family: 'Bodoni Moda', serif;
+  font-style: italic;
+  color: white
+}
