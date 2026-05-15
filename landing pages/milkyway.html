@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milky Way | Big Planetarium</title>
+    <!-- Link to the shared landing style page -->
+    <link rel="stylesheet" href="../stylesheets/landing.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Space+Grotesk:wght@300;400;600&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <nav class="nav show" aria-label="Main Navigation">
+        <img src="../ASSETS/logo 1.png" class="logo" alt="Planetarium Logo">
+
+    </nav>
+
+    <!-- Side title  -->
+    <div class="side-title" aria-hidden="true">MILKY WAY</div>
+
+    <!-- Starfield background  -->
+    <canvas id="space" aria-hidden="true"></canvas>
+
+    <main id="main-content" class="section">
+        <div class="story-scroll-container">
+            <article class="story-block active">
+                <div class="image-wrap">
+                    <img src="../ASSETS/u_mey4kjj5ww-galaxy-1998.gif" alt="Milky Way Galaxy">
+                </div>
+                <div class="text-wrap">
+                    <h3>The Spiral Galaxy</h3>
+                    <p>You drift inside a vast spiral galaxy. The Milky Way contains hundreds of billions of stars. At
+                        its center lies <strong>Sagittarius A*</strong>, a supermassive black hole around which
+                        everything revolves.</p>
+                    <p>Our solar system exists in the Orion Arm, a minor spiral arm of the galaxy, rotating slowly
+                        across 100,000 light years of space.</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <button class="back-btn" type="button" onclick="returnToPortals()" aria-label="Go back to the portal selection">
+        ← RETURN TO PORTALS
+    </button>
+    <!-- Shared landing javascript-->
+    <script src="../scripts/landing.js"></script>
+</body>
+
+</html>

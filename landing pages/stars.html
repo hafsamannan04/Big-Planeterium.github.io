@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stars | Big Planetarium</title>
+  <link rel="stylesheet" href="../stylesheets/landing.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Space+Grotesk:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="nav show" aria-label="Main Navigation">
+    <img src="../ASSETS/logo 1.png" class="logo">
+  </nav>
+
+  <div class="side-title" aria-hidden="true">The Life of Stars</div>
+  <canvas id="space" aria-hidden="true"></canvas>
+  <main id="main-content" class="section">
+    <div class="story-scroll-container">
+      <article class="story-block active">
+        <div class="image-wrap">
+          <img src="../ASSETS/space.jpeg" alt="Deep space view showing a dense field of distant stars ">
+        </div>
+        <div class="text-wrap">
+          <h3>The Life of Stars</h3>
+          <p>Stars are giant spheres of plasma powered by nuclear fusion. They are born in nebulae, live for billions of
+            years, and die as white dwarfs or supernovae.</p>
+          <p>Every star you see is a distant sun, potentially harboring its own solar system and unique worlds yet to be
+            discovered.</p>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <button class="back-btn" type="button" onclick="returnToPortals()" aria-label="Return to the portal selection screen">
+    ← RETURN TO PORTALS
+  </button>
+  <script src="../scripts/landing.js"></script>
+</body>
+
+</html>

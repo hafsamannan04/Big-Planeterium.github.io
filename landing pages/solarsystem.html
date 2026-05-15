@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solar System | Big Planetarium</title>
+  <!-- Link to the shared landing style page -->
+  <link rel="stylesheet" href="../stylesheets/landing.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Space+Grotesk:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <nav class="nav show" aria-label="Main Navigation">
+    <img src="../ASSETS/logo 1.png" class="logo" alt="Big Planetarium Logo">
+
+  </nav>
+
+  <!--Visual decoration - Side title  -->
+  <div class="side-title" aria-hidden="true">SOLAR SYSTEM</div>
+  <!--Visual decoration - Starfield background  -->
+  <canvas id="space" aria-hidden="true"></canvas>
+
+  <!--Main content -->
+  <main id="main-content">
+
+    <section class="section" aria-labelledby="planets-title">
+      <h2 class="title">The Planets</h2>
+      <div class="grid">
+
+        <!-- 
+          Added aria-label so screen readers describe the ACTION (viewing details) 
+          rather than just reading the name of the planet.
+        -->
+        <div class="card"
+          onclick="openPlanet('Mercury', 'Type: Terrestrial (Rocky)<br>Moons: 0<br>Year: 88 Earth Days<br>Atmosphere: Oxygen, Sodium, Hydrogen<br><br>Uniqueness: Smallest planet with extreme temperatures (430°C to -180°C).', '../ASSETS/mercury.gif')"
+          role="button" tabindex="0" aria-label="View details for Mercury">
+          <img src="../ASSETS/mercury.gif" alt="Mercury">
+          <h3>Mercury</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Venus', 'Type: Terrestrial (Rocky)<br>Moons: 0<br>Year: 225 Earth Days<br>Atmosphere: Thick Carbon Dioxide & Sulfuric Acid<br><br>Uniqueness: The hottest planet in our system; it rotates backward.', '../ASSETS/venus.gif')"
+          role="button" tabindex="0" aria-label="View details for Venus">
+          <img src="../ASSETS/venus.gif" alt="Venus ">
+          <h3>Venus</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Earth', 'Type: Terrestrial (Rocky)<br>Moons: 1<br>Year: 365 Days<br>Atmosphere: Nitrogen & Oxygen<br><br>Uniqueness: The only world known to harbor life and liquid surface water.', '../ASSETS/earth.gif')"
+          role="button" tabindex="0" aria-label="View details for Earth">
+          <img src="../ASSETS/earth.gif" alt="Earth">
+          <h3>Earth</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Mars', 'Type: Terrestrial (Rocky)<br>Moons: 2<br>Year: 687 Earth Days<br>Atmosphere: Mostly Carbon Dioxide<br><br>Uniqueness: The Red Planet; home to Olympus Mons, the largest volcano in space.', '../ASSETS/mars.gif')"
+          role="button" tabindex="0" aria-label="View details for Mars">
+          <img src="../ASSETS/mars.gif" alt="Mars">
+          <h3>Mars</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Jupiter', 'Type: Gas Giant<br>Moons: 95<br>Year: 12 Earth Years<br>Atmosphere: Hydrogen & Helium<br><br>Uniqueness: The King of Planets; twice as massive as all other planets combined.', '../ASSETS/jupiter.gif')"
+          role="button" tabindex="0" aria-label="View details for Jupiter">
+          <img src="../ASSETS/jupiter.gif" alt="Jupiter">
+          <h3>Jupiter</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Saturn', 'Type: Gas Giant<br>Moons: 146<br>Year: 29 Earth Years<br>Atmosphere: Hydrogen & Helium<br><br>Uniqueness: Spectacular ring system; it is so light it would float in water.', '../ASSETS/saturn.gif')"
+          role="button" tabindex="0" aria-label="View details for Saturn">
+          <img src="../ASSETS/saturn.gif" alt="Saturn">
+          <h3>Saturn</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Uranus', 'Type: Ice Giant<br>Moons: 27<br>Year: 84 Earth Years<br>Atmosphere: Hydrogen, Helium, Methane<br><br>Uniqueness: The Sideways Planet; it rotates on its side due to an ancient collision.', '../ASSETS/uranus.gif')"
+          role="button" tabindex="0" aria-label="View details for Uranus">
+          <img src="../ASSETS/uranus.gif" alt="Uranus">
+          <h3>Uranus</h3>
+        </div>
+        <div class="card"
+          onclick="openPlanet('Neptune', 'Type: Ice Giant<br>Moons: 14<br>Year: 165 Earth Years<br>Atmosphere: Hydrogen, Helium, Methane<br><br>Uniqueness: The Windiest World. Supersonic winds reach speeds over 1,200 mph.', '../ASSETS/neptune.gif')"
+          role="button" tabindex="0" aria-label="View details for Neptune">
+          <img src="../ASSETS/neptune.gif" alt="Neptune">
+          <h3>Neptune</h3>
+        </div>
+      </div>
+
+      <h2 class="title">Sun & the Moon </h2>
+      <div class="grid-center">
+        <div class="card"
+          onclick="openPlanet('Sun','Type: Star<br>Center of Solar System<br><br>Uniqueness: Provides all energy for life on Earth<br><br><h3>Moon</h3> The Moon orbits Earth and influences tides and is the only natural satellite of our planet.','../ASSETS/Sun-Moon.gif')"
+          role="button" tabindex="0" aria-label="View details for the Sun and Moon">
+
+
+          <img src="../ASSETS/Sun-Moon.gif" alt="Visualization of the Sun and Moon">
+        </div>
+      </div>
+    </section>
+  </main>
+
+
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="mtitle">
+    <div class="modal-content">
+      <button class="close" type="button" onclick="closeModal()" aria-label="Close details">
+        Close</button>
+      <img id="mimg" alt="Planet detail visual">
+      <h2 id="mtitle"></h2>
+      <p id="mdesc"></p>
+    </div>
+  </div>
+
+  <button class="back-btn" type="button" onclick="returnToPortals()" aria-label="Return to portal selection">
+    ← RETURN TO PORTALS
+  </button>
+
+  <script src="../scripts/landing.js"></script>
+
+</body>
+
+</html>
