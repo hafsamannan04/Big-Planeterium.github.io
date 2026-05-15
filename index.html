@@ -1,37 +1,259 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Big Planetarium</title>
-<body>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <header>
-        <nav class="navbar">
-            <ul class="nav-links">
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Explore Space</a></li>
-                <li><a href="#">Planets</a></li>
-                <li><a href="#">Visit Us</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Page title for screen readers -->
+  <title>Big Planetarium| Explore the Universe</title>
 
-     <!-- Homepage -->
-    <section class="heading">
-       <h1 class="title">
-  <span class="flicker">BIG</span><br>
-  <span class="flicker delay">PLANETERIUM</span>
-</h1>
+  <!-- Main external stylesheet link -->
+  <link rel="stylesheet" href="stylesheets/style.css">
 
-<p>explore the beautiful cosmos and the milky way galaxy </p>
-<p>it beautiful indeed </p>
-        <button class="cta">Get Started</button>
+  <!-- Space-themed fonts link-->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800&family=Space+Grotesk:wght@300;400;600&display=swap"
+    rel="stylesheet">
+</head>
+
+<body class="home-page">
+
+  <!-- INTRO logo video-->
+  <!--Better accessibility telling user its temporary overlay and 
+   aria label explains what section is about-->
+  <div id="introOverlay" role="dialog" aria-label="Intro animation overlay">
+    <!--aria hidden used to prevent reading unnecessary media content-->
+    <video id="introVideo" muted playsinline autoplay aria-hidden="true">
+
+      <source src="ASSETS/logo 4k.mp4" type="video/mp4">
+    </video>
+
+    <!-- Accessible skip button -->
+    <!--  to help users to jump directly to the homepage-->
+    <button class="skipIntroBtn" onclick="skipIntro()">Skip Intro</button>
+  </div>
+
+  <!--Main Navigation  -->
+  <nav class="nav" id="nav" aria-label="Main Navigation">
+    <!-- Accessible alt text -->
+    <img src="ASSETS/logo 1.png" class="logo" alt="Big Planetarium Logo">
+    <div>
+      <!-- type="button"- to prevent button from acting like a form submit -->
+      <button type="button" onclick="playIntro()" aria-label="Replay intro">
+        Intro</button>
+      <button type="button" onclick="go('home')" aria-label="Go to home screen">
+        Home</button>
+      <button type="button" onclick="go('story')" aria-label="Open story timeline">
+        Story Timeline</button>
+      <button type="button" onclick="go('doors')" aria-label="Open portal section">
+        Portals</button>
+    </div>
+  </nav>
+  <!--Main Navigation ends here  -->
+
+  <!-- Decorative side title of website -->
+  <div class="side-title" aria-hidden="true">BIG PLANETARIUM</div>
+  <canvas id="space" aria-hidden="true"> </canvas>
+
+  <!-- Back navigation button -->
+  <button id="backBtn" class="back-btn hidden" type="button" aria-label="return to homepage">
+
+    ← TERMINATE JOURNEY</button>
+
+    <!-- Accessible skip link -->
+  <!--to help keyboard users skip repetitive navigation -->
+  <a href="#main-content" class="skip-link">
+    Skip to main content
+  </a>
+  
+ <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Home Screen -->
+    <section class="screen hidden" id="home" aria-labelledby="home-title">
+      <h1>Big Planetarium</h1>
+
+      <p class="subtitle1">You awaken in an infinite void. No stars. No light. Only silence… until reality begins to
+        form
+        around your
+        consciousness.</p>
+      <button class="awaken-btn" type="button" onclick="go('home2')"
+        aria-label="Begin awakening sequence">Awaken</button>
     </section>
 
+    <!--2nd pre-intro Home screen-->
+    <section class="screen hidden" id="home2" aria-labelledby="journey-title">
 
-    <div>
-   
+      <h1 class="title">Through Space & Time</h1>
 
+      <p class="subtitle2">A cinematic exploration of the 13.8 billion year voyage of our universe.</p>
+
+      <button class="awaken-btn" type="button" onclick="go('story')" aria-label="Start universe journey">
+        START JOURNEY</button>
+    </section>
+
+    <!-- DETAILED STORY TIMELINE SECTION -->
+
+    <section class="section hidden" id="story" aria-labelledby="timeline-heading">
+      <div class="story-scroll-container">
+        <div class="story-header">
+
+          <h2 id="subheading">The Timeline</h2>
+
+        </div>
+
+        <!-- 1 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_1579876334.gif"
+              alt="Animated visualization of the Big Bang expansion">
+          </div>
+          <div class="text-wrap">
+            <h3>01. The Big Bang</h3>
+            <p>13.8 billion years ago, everything began as a "singularity"—a point of infinite heat and density.
+              In a rapid growth spurt called <strong>Inflation</strong>, space expanded exponentially in a
+              tiny fraction of a second.</p>
+          </div>
+        </article>
+
+        <!-- ================================================= -->
+
+        <!-- 2 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_2085432392.gif" alt="Primordial soup"></div>
+          <div class="text-wrap">
+            <h3>02. The Early Soup</h3>
+            <p>The universe was a "Quark Soup," too hot for matter to exist. As it cooled, a tiny imbalance
+              between matter and antimatter allowed matter to survive, eventually forming the first protons
+              and neutrons.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 3 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_1296100878.gif" alt="Cosmic Microwave Background map"></div>
+          <div class="text-wrap">
+            <h3>03. Let There Be Light</h3>
+            <p>380,000 years later, the universe cooled enough for neutral atoms to form. The "fog" cleared, and
+              light traveled freely for the first time. This echo is still visible today as the <strong>Cosmic
+                Microwave Background (CMB)</strong>.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 4 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_1156726132.gif" alt="The Dark age"></div>
+          <div class="text-wrap">
+            <h3>04. The Dark Ages</h3>
+            <p>For millions of years, the universe was dark. There were no stars, only vast clouds of hydrogen
+              and helium gas waiting for the invisible tug of Dark Matter to pull them together.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 5 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_1041196085.gif" alt="First stars"></div>
+          <div class="text-wrap">
+            <h3>05. The Cosmic Dawn</h3>
+            <p>Gravity eventually won. The first stars (Population III) ignited, clustering into the first
+              galaxies. Their ultraviolet light reionized the gas, finally clearing the cosmic haze.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 6 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_243748687.gif" alt="Galaxy Assembly"></div>
+          <div class="text-wrap">
+            <h3>06. Heavy Elements</h3>
+            <p>The first stars died in violent supernovas, forging carbon, oxygen, and iron. These elements
+              seeded the cosmos, providing the "stardust" needed to build later stars and planets.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 7 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_2030505076.gif" alt="Formation of planets">
+          </div>
+          <div class="text-wrap">
+            <h3>07. Our Solar System</h3>
+            <p>4.6 billion years ago, a nebula collapsed to form our Sun and Earth. By 3.8 billion years ago,
+              simple life emerged, evolving into complex beings capable of wondering about their origins.</p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- 8 -->
+        <article class="story-block">
+          <div class="image-wrap"><img src="ASSETS/cosmos_456571891.gif" alt="Future Universe"></div>
+          <div class="text-wrap">
+            <h3>08. The Infinite Future</h3>
+            <p>Today, Dark Energy accelerates expansion. One day, the universe may end in a cold "Heat Death" as the
+              last
+              stars burn out and space drifts apart. <strong>But before the lights fade, the vastness of the present
+                remains yours to explore. Step through the portals to witness the wonders that exist in our fleeting
+                moment of cosmic time.</strong> </p>
+          </div>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- Portal transition button -->
+        <button class="awaken-btn" type="button" onclick="go('doors')" aria-label="Open universe portals">
+          TRANSIT THE PORTALS</button>
+      </div>
+    </section>
+
+    <!-- ================================================= -->
+    <!-- PORTAL SECTION -->
+    <section class="screen hidden" id="doors" aria-labelledby="portal-heading">
+
+      <h2>Choose a Portal</h2>
+
+      <div class="doorGrid">
+
+        <!-- ================================================= -->
+        <!-- Portal 1-Milky Way Galaxy-->
+
+        <!-- tabindex to allow keyboard focus and 
+    role="button" to tell users that this behaves like a button.-->
+
+        <article class="door" tabindex="0" role="button" aria-label="Enter the Milky Way portal"
+          onclick="window.location.href='landing pages/milkyway.html'">
+          <img src="ASSETS/u_mey4kjj5ww-galaxy-1998.gif" alt="Animated Milky Way galaxy">
+
+          <h3>Milky Way</h3>
+        </article>
+        <!-- ================================================= -->
+
+        <!-- Portal 2 - Solar System -->
+        <article class="door" tabindex="0" role="button" aria-label="Enter the Solar System portal"
+          onclick="window.location.href='landing pages/solarsystem.html'">
+          <img src="ASSETS/universe.jpeg" alt="Illustration of the Solar System planets">
+
+          <h3>Solar System</h3>
+        </article>
+        <!-- ================================================= -->
+        <!-- PORTAL 3 - Stars -->
+
+        <article class="door" tabindex="0" role="button" aria-label="Enter the Stars and Beyond portal"
+          onclick="window.location.href='landing pages/stars.html'">
+          <img src="ASSETS/space.jpeg" alt="Deep space filled with stars and galaxies">
+          <h3>Stars & Beyond</h3>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- Main JavaScript link -->
+  <script src="scripts/script.js"></script>
+
+</body>
+
+</html>
 </body>
 </html>
