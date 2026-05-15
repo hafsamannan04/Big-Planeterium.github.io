@@ -43,7 +43,7 @@ canvas {
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left top;
   font-family: 'Orbitron', sans-serif;
-  font-size: 22px;
+  font-size: 15px;
   letter-spacing: 6px;
   color: var(--gold);
   z-index: 10;

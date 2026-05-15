@@ -95,7 +95,7 @@ button:focus {
   transform: translateY(-50%) rotate(-90deg);
   transform-origin: left top;
   font-family: 'Orbitron', sans-serif;
-  font-size: 22px;
+  font-size: 15px;
   letter-spacing: 6px;
   color: burlywood;
   animation: floatText 6s infinite;
@@ -208,7 +208,7 @@ button:focus {
   border-radius: 6px;
   cursor: pointer;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 20px;
+  font-size: 17px;
 
 }
 
@@ -502,7 +502,7 @@ and then switches for the next blocks */
 }
 
 #subheading {
-  font-size: 90px;
+  font-size: 70px;
   font-weight: 500;
   font-family: 'Bodoni Moda', serif;
   font-style: italic;
